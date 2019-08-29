@@ -16,15 +16,14 @@ if(opSystem == 'Linux'):
 	filePrefix = 'COTAHIST_A'
 	fileStartYear = 1986
 	fileEndYear = 2019
-	fileExtension = '.zip'
 	
 	linuxCommand = 'unzip '
 	linuxCommandArg = '-d '
 
 	for year in range(fileStartYear, fileEndYear + 1):
-		completeCommand = (linuxCommand + location + filePrefix + str(year) + fileExtension + ' ' + linuxCommandArg + destiny)
+		completeCommand = (linuxCommand + location + filePrefix + str(year) + ' ' + linuxCommandArg + destiny)
 		print(completeCommand)
-		subprocess.Popen([completeCommand])
+		subprocess.Popen(completeCommand)
 
 if(opSystem == 'Windows'):
 	
@@ -49,6 +48,3 @@ if(opSystem == 'Windows'):
 		result = subprocess.Popen(['powershell.exe',completeCommand])
 		print(result)
 	print("Done.")
-
-if(opSystem == 'Darwin'):
-	print("Reached")
