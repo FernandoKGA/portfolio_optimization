@@ -5,35 +5,28 @@ import platform
 opSystem = platform.system()
 
 if(opSystem == 'Linux'):
+    pathBase = os.path.split(os.path.dirname(os.path.abspath(__file__)))[0] + '/'
+    pathSufix = 'Datasets/Dataset_Bovespa/'
+    pathDestiny = 'Unzipped/'
 
-	pathBase = os.path.split(os.path.dirname(os.path.abspath(__file__)))[0] + '/'
-	pathSufix = 'Datasets/Dataset_Bovespa/'
-	pathDestiny = 'Unzipped/'
-	
-	location = pathBase + pathSufix + pathSender
+    location = pathBase + pathSufix + pathDestiny
 
-	filePrefix = 'COTAHIST.A'
-	fileStartYear = 1986
-	fileEndYear = 2000
+    filePrefix = 'COTAHIST.A'
+    fileStartYear = 1986
+    fileEndYear = 2000
 
-    filePrefixDesired = "COTAHIST_A"
+    filePrefixDesired = 'COTAHIST_A'
     fileExtension = '.txt'
 
-	linuxCommand = 'mv'
-
-	for year in range(fileStartYear, fileEndYear + 1):
-        completeCommand = linuxCommand + ' ' + location + filePrefix + str(year) + ' ' + filePrefixDesired + str(year) + fileExtension
-        print(completeCommand)
-        result = subprocess.Popen(completeCommand, shell=True)
-        print(result)
+    for year in range(fileStartYear, fileEndYear + 1):
+        os.rename(location + filePrefix + str(year), location + filePrefixDesired + str(year) + fileExtension)
+        print(location + filePrefix + str(year) + ' ' + location + filePrefixDesired + str(year) + fileExtension)
     print("Conversion done from 1986 to 1999.")
-    
-    completeCommand = powerShellCommand + location + filePrefixDesired + str(2000) + ' ' + commandComplement + ' ' + filePrefixDesired + str(2000) + fileExtension
-    result = subprocess.Popen(completeCommand, shell=True)
-    print(result)
+
+    print(location + filePrefixDesired + str(2001), location + filePrefixDesired + str(2001) + fileExtension)
+    os.rename(location + filePrefixDesired + str(2001), location + filePrefixDesired + str(2001) + fileExtension)
 
 if(opSystem == 'Windows'):
-
     pathBase = os.path.split(os.path.dirname(os.path.abspath(__file__)))[0] + '\\'
 
     pathSufix = 'Datasets\\Dataset_Bovespa\\'
