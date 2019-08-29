@@ -8,7 +8,7 @@ if(opSystem == 'Linux'):
 	pathBase = os.path.split(os.path.dirname(os.path.abspath(__file__)))[0] + '/'
 	pathSufix = 'Datasets/Dataset_Bovespa/'
 	pathSender = 'Zipped/'
-	pathDestiny = 'Unzipped'
+	pathDestiny = 'Unzipped/'
 	
 	location = pathBase + pathSufix + pathSender
 	destiny = pathBase + pathSufix + pathDestiny
@@ -23,7 +23,8 @@ if(opSystem == 'Linux'):
 	for year in range(fileStartYear, fileEndYear + 1):
 		completeCommand = (linuxCommand + location + filePrefix + str(year) + ' ' + linuxCommandArg + destiny)
 		print(completeCommand)
-		subprocess.Popen(completeCommand)
+		result = subprocess.Popen(completeCommand, shell=True)
+		print(result)
 
 if(opSystem == 'Windows'):
 	
