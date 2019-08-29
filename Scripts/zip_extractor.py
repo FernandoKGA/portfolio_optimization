@@ -23,7 +23,7 @@ if(opSystem == 'Linux'):
 	for year in range(fileStartYear, fileEndYear + 1):
 		completeCommand = (linuxCommand + location + filePrefix + str(year) + ' ' + linuxCommandArg + destiny)
 		print(completeCommand)
-		subprocess.Popen(completeCommand)
+		subprocess.Popen(completeCommand, shell= True)
 
 if(opSystem == 'Windows'):
 	
