@@ -16,7 +16,7 @@ if(opSystem == 'Linux'):
     fileEndYear = 2000
 
     filePrefixDesired = 'COTAHIST_A'
-    fileExtension = '.txt'
+    fileExtension = '.TXT'
 
     for year in range(fileStartYear, fileEndYear + 1):
         os.rename(location + filePrefix + str(year), location + filePrefixDesired + str(year) + fileExtension)
