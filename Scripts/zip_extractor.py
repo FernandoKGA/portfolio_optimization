@@ -13,6 +13,11 @@ if(opSystem == 'Linux'):
 	location = pathBase + pathSufix + pathSender
 	destiny = pathBase + pathSufix + pathDestiny
 
+	try:
+		os.mkdir(destiny)
+	except FileExistsError:
+		pass
+
 	filePrefix = 'COTAHIST_A'
 	fileStartYear = 1986
 	fileEndYear = 2019
