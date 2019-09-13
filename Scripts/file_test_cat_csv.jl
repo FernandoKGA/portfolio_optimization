@@ -1,4 +1,5 @@
-using CSV, DataFrames
+include("file_reader_functions.jl")
+using CSV, DataFrames, .FuncoesArquivoBovespa
 
 root_dir = dirname(pwd())
 unzipped_files_path = *(root_dir, "/Datasets/Dataset_Bovespa/Unzipped/")
@@ -9,7 +10,18 @@ file_extension = ".TXT"
 file = open(unzipped_files_path*file_name*file_extension,"r")
     
 count = 0
-    
+dataFrame = DataFrame(
+    DATPRG = [], CODBDI = [], CODNEG = [],
+    TPMERC = [], NOMRES = [], ESPECI = [],
+    PRAZOT = [], MODREF = [], PREABE = [],
+    PREMAX = [], PREMIN = [], PREMED = [],
+    PREULT = [], PREOFC = [], PREOFV = [],
+    TOTNEG = [], QUATOT = [], VOLTOT = [],
+    PREEXE = [], INDOPC = [], DATVEN = [],
+    FATCOT = [], PTOEXE = [], CODISI = [],
+    DISMES = []
+)
+println(names(dataFrame))
 csv = open((unzipped_files_path*file_name*".csv"),"w")
 
 for line in eachline(file)
@@ -42,6 +54,32 @@ for line in eachline(file)
         println("PTOEXE "*SubString(line,218,230))
         println("CODISI "*SubString(line,231,242))
         println("DISMES "*SubString(line,243,245))
+#= 
+println("DATA DO PREGAO "*DataPregao(line))
+println("CODBDI "*CodBdi(line))
+println("CODNEG "*CodNeg(line))
+println("TPMERC "*TpMerc(line))
+println("NOMRES "*NomRes(line))
+println("ESPECI "*Especi(line))
+println("PRAZOT "*PrazoT(line))
+println("MODREF "*ModRef(line))
+println("PREABE "*PreAbe(line))
+println("PREMAX "*PreMax(line))
+println("PREMIN "*PreMin(line))
+println("PREMED "*PreMed(line))
+println("PREULT "*PreUlt(line))
+println("PREOFC "*PreOfc(line))
+println("PREOFV "*PreOfv(line))
+println("TOTNEG "*TotNeg(line))
+println("QUATOT "*QuaTot(line))
+println("VOLTOT "*VolTot(line))
+println("PREEXE "*PreExe(line))
+println("INDOPC "*IndOpc(line))
+println("DATVEN "*DatVen(line))
+println("FATCOT "*FatCot(line))
+println("PTOEXE "*PtoExe(line))
+println("CODISI "*CodIsi(line))
+println("DISMES "*DisMes(line)) =#
         break;
     else 
         println("fim")        
