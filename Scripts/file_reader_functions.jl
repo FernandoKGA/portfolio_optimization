@@ -1,5 +1,5 @@
 module FuncoesArquivoBovespa
-
+#comment
 export DataPregao, CodBdi, CodNeg, TpMerc, NomRes, Especi,
 PrazoT, ModRef, PreAbe, PreMax, PreMin, PreMed, PreUlt,
 PreOfc, PreOfv, TotNeg, QuaTot, VolTot, PreExe, IndOpc,
