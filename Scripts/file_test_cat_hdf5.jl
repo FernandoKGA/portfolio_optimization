@@ -1,4 +1,4 @@
-using CSV, DataFrames, Dates
+using DataFrames, Dates, HDF5
 
 root_dir = dirname(pwd())
 unzipped_files_path = *(root_dir, "/Datasets/Dataset_Bovespa/Unzipped/")
@@ -21,7 +21,8 @@ dataFrame = DataFrame(
     DISMES = []
 )
 println(names(dataFrame))
-csv = open((unzipped_files_path*file_name*".csv"),"w")
+
+hdf5 = h5open((unzipped_files_path*"COTAHIST"*".h5"),"w")
 
 time_inicio = Dates.now()
 
@@ -70,11 +71,7 @@ for line in eachline(file)
     end
 end
 
-CSV.write(csv, dataFrame)
-
 time_fim = Dates.now()
 println("TI: "*Dates.format(time_inicio, "S:s"))
 println("TF: "*Dates.format(time_fim, "S:s"))
 println(time_fim-time_inicio)
-
-close(csv)
