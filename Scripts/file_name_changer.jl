@@ -1,10 +1,4 @@
-import subprocess as subprocess
-import os
-import platform
-
-opSystem = platform.system()
-
-if(opSystem == 'Linux'):
+if Sys.islinux()
     pathBase = os.path.split(os.path.dirname(os.path.abspath(__file__)))[0] + '/'
     pathSufix = 'Datasets/Dataset_Bovespa/'
     pathDestiny = 'Unzipped/'
@@ -26,7 +20,7 @@ if(opSystem == 'Linux'):
     print(location + filePrefixDesired + str(2001), location + filePrefixDesired + str(2001) + fileExtension)
     os.rename(location + filePrefixDesired + str(2001), location + filePrefixDesired + str(2001) + fileExtension)
 
-if(opSystem == 'Windows'):
+if Sys.iswindows()
     pathBase = os.path.split(os.path.dirname(os.path.abspath(__file__)))[0] + '\\'
 
     pathSufix = 'Datasets\\Dataset_Bovespa\\'

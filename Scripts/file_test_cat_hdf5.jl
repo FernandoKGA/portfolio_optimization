@@ -22,7 +22,9 @@ dataFrame = DataFrame(
 )
 println(names(dataFrame))
 
-hdf5 = h5open((unzipped_files_path*"COTAHIST"*".h5"),"w")
+hdf5 = h5open((unzipped_files_path*"COTAHIST"*".h5"),"w") do file
+    g = g_create(file, "COTAHIST")
+end
 
 time_inicio = Dates.now()
 
