@@ -1,50 +1,27 @@
-if Sys.islinux()
-    pathBase = os.path.split(os.path.dirname(os.path.abspath(__file__)))[0] + '/'
-    pathSufix = 'Datasets/Dataset_Bovespa/'
-    pathDestiny = 'Unzipped/'
+using Base.Filesystem
+const fs = Base.Filesystem
 
-    location = pathBase + pathSufix + pathDestiny
+path_base = dirname(pwd())
+path_sufix = "/Datasets/Dataset_Bovespa/"
+path_destiny = "Unzipped/"
 
-    filePrefix = 'COTAHIST.A'
-    fileStartYear = 1995
-    fileEndYear = 2000
+location = path_base * path_sufix * path_destiny
 
-    filePrefixDesired = 'COTAHIST_A'
-    fileExtension = '.TXT'
+file_prefix = "COTAHIST.A"
+file_start_year = 1995
+file_end_year = 2000
 
-    for year in range(fileStartYear, fileEndYear + 1):
-        os.rename(location + filePrefix + str(year), location + filePrefixDesired + str(year) + fileExtension)
-        print(location + filePrefix + str(year) + ' ' + location + filePrefixDesired + str(year) + fileExtension)
-    print("Conversion done from 1995 to 2000.")
+file_prefix_desired = "COTAHIST_A"
+file_extension = ".TXT"
 
-    print(location + filePrefixDesired + str(2001), location + filePrefixDesired + str(2001) + fileExtension)
-    os.rename(location + filePrefixDesired + str(2001), location + filePrefixDesired + str(2001) + fileExtension)
+for year in range(file_start_year, stop=file_end_year)
+    path_original = location * file_prefix * string(year)
+    path_renamed = location * file_prefix_desired * string(year) * file_extension
+    fs.mv(path_original, path_renamed)
+end
 
-if Sys.iswindows()
-    pathBase = os.path.split(os.path.dirname(os.path.abspath(__file__)))[0] + '\\'
+path_original = location * file_prefix_desired * "2001"
+path_renamed = location * file_prefix_desired * "2001" * file_extension
+fs.mv(path_original, path_renamed)
 
-    pathSufix = 'Datasets\\Dataset_Bovespa\\'
-    pathSender = 'Unzipped\\'
-
-    location = pathBase + pathSufix + pathSender
-
-    filePrefix = 'COTAHIST.A'
-    fileStartYear = 1995
-    fileEndYear = 2000
-
-    filePrefixDesired = 'COTAHIST_A'
-    fileExtension = '.txt'
-
-    powerShellCommand = 'Rename-Item -Path '
-    commandComplement = '-NewName'
-
-    for year in range(fileStartYear, fileEndYear + 1):
-        completeCommand = powerShellCommand + location + filePrefix + str(year) + ' ' + commandComplement + ' ' + filePrefixDesired + str(year) + fileExtension
-        print(completeCommand)
-        result = subprocess.Popen(['powershell.exe',completeCommand])
-        print(result)
-    print("Conversion done from 1995 to 2000.")
-    
-    completeCommand = powerShellCommand + location + filePrefixDesired + str(2000) + ' ' + commandComplement + ' ' + filePrefixDesired + str(2000) + fileExtension
-    result = subprocess.Popen(['powershell.exe',completeCommand])
-    print(result)
+println("Files from 1995 to 2001 were successfully converted!!")
