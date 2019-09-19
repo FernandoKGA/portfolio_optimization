@@ -22,16 +22,21 @@ dataFrame = DataFrame(
 )
 println(names(dataFrame))
 
-hdf5 = h5open((unzipped_files_path*"COTAHIST"*".h5"),"w") do file
-    g = g_create(file, "COTAHIST")
-end
+hdf5_file_name = (unzipped_files_path*"COTAHIST"*".h5")
+println(hdf5_file_name)
 
 time_inicio = Dates.now()
+
+#matrix = Matrix{String}(undef,0,25)
 
 for line in eachline(file)
     global count += 1
     if (SubString(line,1,2) == "00")
         println("header")
+        header = ["DATPRG" "CODBDI" "CODNEG" "TPMERC" "NOMRES" "ESPECI" "PRAZOT" "MODREF" "PREABE" "PREMAX" "PREMIN" "PREMED" "PREULT" "PREOFC" "PREOFV" "TOTNEG" "QUATOT" "VOLTOT" "PREEXE" "INDOPC" "DATVEN" "FATCOT" "PTOEXE" "CODISI" "DISMES"]
+        #println(header)
+        #global matrix = vcat(matrix,header)
+        h5write(hdf5_file_name,"header",header)
     elseif (SubString(line,1,2) == "01")
         data_pregao = SubString(line,3,10)
         codbdi = SubString(line,11,12)
@@ -59,6 +64,11 @@ for line in eachline(file)
         codisi = SubString(line,231,242)
         dismes = SubString(line,243,245)
         
+        row = [codbdi codneg tpmerc nomres especi  prazot  modref  preabe  premax premin  premed  preult  preofc  preofv totneg  quatot  voltot  preexe  indopc datven  fatcot  ptoexe  codisi  dismes]
+
+        h5write(hdf5_file_name,data_pregao,row)
+        
+        #global matrix = vcat(matrix, row)
         push!(dataFrame,
             (
                 data_pregao, codbdi, codneg, tpmerc, nomres,
@@ -71,7 +81,10 @@ for line in eachline(file)
     else 
         println("fim")        
     end
+
 end
+
+matrix = convert(Matrix, dataFrame)
 
 time_fim = Dates.now()
 println("TI: "*Dates.format(time_inicio, "S:s"))
