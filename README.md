@@ -6,7 +6,7 @@ O objetivo do trabalho é a criação de uma aplicação que efetue os cálculos
 
 ## Instruções
 
-Os arquivos necessários para rodar os scripts não estarão no formato pedido para os scripts serem rodados, eles devem ser extraídos através do script `zip_extractor.py`, devido ao tamanho dos arquivos individuais... Somente estarão presentes os arquivos compactados.
+Os arquivos necessários para a execução dos scripts deverão ser extraídos e inicializados. Para tal, execute o script `prep_env.jl`. Devido ao tamanho dos arquivos individuais, estes estarão presentes apenas no formato compactado.
 
 
 ## Layout dos arquivos
