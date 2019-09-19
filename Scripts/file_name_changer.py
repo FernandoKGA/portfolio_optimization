@@ -12,7 +12,7 @@ if(opSystem == 'Linux'):
     location = pathBase + pathSufix + pathDestiny
 
     filePrefix = 'COTAHIST.A'
-    fileStartYear = 1986
+    fileStartYear = 1995
     fileEndYear = 2000
 
     filePrefixDesired = 'COTAHIST_A'
@@ -35,7 +35,7 @@ if(opSystem == 'Windows'):
     location = pathBase + pathSufix + pathSender
 
     filePrefix = 'COTAHIST.A'
-    fileStartYear = 1986
+    fileStartYear = 1995
     fileEndYear = 2000
 
     filePrefixDesired = 'COTAHIST_A'

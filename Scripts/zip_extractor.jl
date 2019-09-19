@@ -33,7 +33,7 @@ else
         file_prefix = "COTAHIST_A"
         file_begin_counter = 1995
         file_end_counter = 2019
-        fileExtension = '.zip'
+        fileExtension = ".zip"
     
         path_sufix = "\\Datasets\\Dataset_Bovespa\\"
         path_sender = "Zipped\\"
