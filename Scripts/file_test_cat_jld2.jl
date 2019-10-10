@@ -20,7 +20,7 @@ dataFrame = DataFrame(DATPRG = [], CODBDI = [], CODNEG = [],
     DISMES = [])
 println(names(dataFrame))
 
-hdf5_file_name = (unzipped_files_path * "COTAHIST" * ".jld2")
+hdf5_file_name = (unzipped_files_path * "COTAHIST_test" * ".jld2")
 println(hdf5_file_name)
 
 time_inicio = Dates.now()
