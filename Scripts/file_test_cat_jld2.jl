@@ -1,13 +1,16 @@
 using DataFrames, Dates, JLD2, FileIO
 
+#caminho do arquivo
 root_dir = dirname(pwd())
 unzipped_files_path = *(root_dir, "/Datasets/Dataset_Bovespa/Unzipped/")
 println(unzipped_files_path)
 file_name = "COTAHIST_A1995"
 file_extension = ".TXT"
 
+#abre o arquivo
 file = open(unzipped_files_path * file_name * file_extension, "r")
-    
+
+#defini dataframe (apenas o nome das colunas)
 count = 0
 dataFrame = DataFrame(DATPRG = [], CODBDI = [], CODNEG = [],
     TPMERC = [], NOMRES = [], ESPECI = [],
@@ -18,14 +21,18 @@ dataFrame = DataFrame(DATPRG = [], CODBDI = [], CODNEG = [],
     PREEXE = [], INDOPC = [], DATVEN = [],
     FATCOT = [], PTOEXE = [], CODISI = [],
     DISMES = [])
-println(names(dataFrame))
+println(names(dataFrame)) #nome das colunas
 
+#nome do arquivo final
 hdf5_file_name = (unzipped_files_path * "COTAHIST_test" * ".jld2")
 println(hdf5_file_name)
 
+#calculo de tempo de execucao
 time_inicio = Dates.now()
 
 matrix = Matrix{Any}(undef, 0, 25)
+
+#percorre o arquivo e passa para o dataframe
 
 for line in eachline(file)
     global count += 1
