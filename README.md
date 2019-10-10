@@ -6,10 +6,27 @@ O objetivo do trabalho é a criação de uma aplicação que efetue os cálculos
 
 ## Instruções
 
+### Extração dos arquivos
+
 Os arquivos necessários para a execução dos scripts deverão ser extraídos e inicializados. Para tal, execute o script `prep_env.jl`. Devido ao tamanho dos arquivos individuais, estes estarão presentes apenas no formato compactado.
 
-O formato original dos arquivos é `.txt`. Se desejar convertê-los para o formato `.csv`, execute o script `files_reader_to_csv.jl`. 
+* Abrir o terminal e executar: `julia prep_env.jl`
 
+A saida após essa execução serão as bibliotecas baixadas e os arquivos extraidos no formato txt.
+
+Para a criação do arquivo unico em formato JLD2 é necessário rodar o script `files_reader_to_jld2.jl`. 
+
+* Abrir o terminal e executar: `julia files_reader_to_jld2.jl`
+
+ATENÇÃO: a execução desse script demanda muita memória RAM, idealmente a partir de 8gb. Recomendamos não rodar mais processos parelelos durante essa execução  
+
+### Acessando os datasets 
+
+* Abrir o terminal e executar: 
+1 - `julia`
+2 - `dataframe = load("<caminho do arquivo>/COTAHIST.jld2","COTAHIST/<ano que quer ver>")`
+
+A saída para esse comando será o dataset correspondante ao ano especificado 
 
 ## Layout dos arquivos
 
