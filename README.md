@@ -2,7 +2,7 @@
 Repository for a Portfolio Optimization proposed in the Problem Resolution 2 subject, following the 'Modern Portfolio Theory' of Markowitz.
 
 ## Objetivos 
-O objetivo do trabalho é a criação de uma aplicação que efetue os cálculos de otimização carteiras de ações. A otimização consiste em aplicação de restrições a um portfólio de ações. Dessa forma a aplicação deve apresentar as opções ao usuário e apresentar no final um ranking de risco e retorno dos ações que compõem esse portfólio de acordo com as entradas do usuário, ou seja, seu perfil.
+O objetivo do trabalho é a criação de uma aplicação que efetue os cálculos de otimização de carteiras de ações. A otimização consiste na aplicação de restrições a um portfólio de ações. Dessa forma a aplicação deve oferecer as opções ao usuário e apresentar no final um ranking de risco e retorno das ações que compõem esse portfólio de acordo com as entradas do usuário, ou seja, seu perfil.
 
 ## Instruções
 
@@ -27,7 +27,7 @@ ATENÇÃO: a execução desse script demanda muita memória RAM, idealmente a pa
 1. `julia`
 2. `dataframe = load("<caminho do arquivo>/COTAHIST.jld2","COTAHIST/<ano que quer ver>")`
 
-A saída para esse comando será o dataset correspondante ao ano especificado 
+A saída para esse comando será o dataset correspondente ao ano especificado 
 
 ## Layout dos arquivos
 
