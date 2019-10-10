@@ -37,10 +37,11 @@ jldopen(hdf5_file_name,"w") do jldfile
             if (SubString(line, 1, 2) == "00")
                 println("header")
             elseif (SubString(line, 1, 2) == "01")
-                data_pregao = string(SubString(line, 3, 10))
+                data = SubString(line,3,10)
+                data_pregao = Date(parse(Int,SubString(data,1,4)),parse(Int,SubString(data,5,6)),parse(Int,SubString(data,7,8)))
                 codbdi = string(SubString(line, 11, 12))
                 codneg = string(SubString(line, 13, 24))
-                tpmerc = string(SubString(line, 25, 27))
+                tpmerc = parse(Int,SubString(line, 25, 27))
                 nomres = string(SubString(line, 28, 39))
                 especi = string(SubString(line, 40, 49))
                 prazot = string(SubString(line, 50, 52))
@@ -52,13 +53,14 @@ jldopen(hdf5_file_name,"w") do jldfile
                 preult = string(SubString(line, 109, 121))
                 preofc = string(SubString(line, 122, 134))
                 preofv = string(SubString(line, 135, 147))
-                totneg = string(SubString(line, 148, 152))
-                quatot = string(SubString(line, 153, 170))
+                totneg = parse(Int,SubString(line, 148, 152))
+                quatot = parse(Int,SubString(line, 153, 170))
                 voltot = string(SubString(line, 171, 188))
                 preexe = string(SubString(line, 189, 201))
-                indopc = string(SubString(line, 202, 202))
-                datven = string(SubString(line, 203, 210))
-                fatcot = string(SubString(line, 211, 217))
+                indopc = parse(Int,SubString(line, 202, 202))
+                data_dataven =SubString(line, 203, 210)
+                datven = Date(parse(Int,SubString(data_dataven,1,4)),parse(Int,SubString(data_dataven,5,6)),parse(Int,SubString(data_dataven,7,8)))
+                fatcot = parse(Int,SubString(line, 211, 217))
                 ptoexe = string(SubString(line, 218, 230))
                 codisi = string(SubString(line, 231, 242))
                 dismes = string(SubString(line, 243, 245))
@@ -76,7 +78,7 @@ jldopen(hdf5_file_name,"w") do jldfile
             end
         end
     
-        matrix = convert(Matrix{String}, dataFrame)
+        matrix = convert(Matrix{Any}, dataFrame)
         cotahist[string(file_counter)] = matrix
     
         global file_counter += 1
