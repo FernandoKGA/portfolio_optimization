@@ -23,8 +23,9 @@ ATENÇÃO: a execução desse script demanda muita memória RAM, idealmente a pa
 ### Acessando os datasets 
 
 * Abrir o terminal e executar: 
-1 - `julia`
-2 - `dataframe = load("<caminho do arquivo>/COTAHIST.jld2","COTAHIST/<ano que quer ver>")`
+
+1. `julia`
+2. `dataframe = load("<caminho do arquivo>/COTAHIST.jld2","COTAHIST/<ano que quer ver>")`
 
 A saída para esse comando será o dataset correspondante ao ano especificado 
 
