@@ -51,51 +51,51 @@ for line in eachline(file)
         modref = string(SubString(line, 53, 56))
 
         preabe_string = string(SubString(line, 57, 69))
-        preabe_inteira = tryparse(Float64,string(SubString(preabe_string,1,11)))
-        preabe_decimal = tryparse(Float64,"0."*string(SubString(preabe_string,12,13)))
+        preabe_inteira = tryparse(Float32,string(SubString(preabe_string,1,11)))
+        preabe_decimal = tryparse(Float32,"0."*string(SubString(preabe_string,12,13)))
         preabe = preabe_inteira + preabe_decimal
 
         premax_string = string(SubString(line, 70, 82))
-        premax_inteira = tryparse(Float64,string(SubString(premax_string,1,11)))
-        premax_decimal = tryparse(Float64,"0."*string(SubString(premax_string,12,13)))
+        premax_inteira = tryparse(Float32,string(SubString(premax_string,1,11)))
+        premax_decimal = tryparse(Float32,"0."*string(SubString(premax_string,12,13)))
         premax = premax_inteira + premax_decimal
 
         premin_string = string(SubString(line, 83, 95))
-        premin_inteira = tryparse(Float64, string(SubString(premin_string,1,11)))
-        premin_decimal = tryparse(Float64,"0."*string(SubString(premin_string,12,13)))
+        premin_inteira = tryparse(Float32, string(SubString(premin_string,1,11)))
+        premin_decimal = tryparse(Float32,"0."*string(SubString(premin_string,12,13)))
         premin = premin_inteira + premin_decimal
 
         premed_string = string(SubString(line, 96, 108))
-        premed_inteira = tryparse(Float64, string(SubString(premed_string,1,11)))
-        premed_decimal = tryparse(Float64,"0."*string(SubString(premed_string,12,13)))
+        premed_inteira = tryparse(Float32, string(SubString(premed_string,1,11)))
+        premed_decimal = tryparse(Float32,"0."*string(SubString(premed_string,12,13)))
         premed = premed_inteira + premed_decimal
 
         preult_string = string(SubString(line, 109, 121))
-        preult_inteira = tryparse(Float64, string(SubString(preult_string,1,11)))
-        preult_decimal = tryparse(Float64,"0."*string(SubString(preult_string,12,13)))
+        preult_inteira = tryparse(Float32, string(SubString(preult_string,1,11)))
+        preult_decimal = tryparse(Float32,"0."*string(SubString(preult_string,12,13)))
         preult = preult_inteira + preult_decimal
 
         preofc_string = string(SubString(line, 122, 134))
-        preofc_inteira = tryparse(Float64, string(SubString(preofc_string,1,11)))
-        preofc_decimal = tryparse(Float64,"0."*string(SubString(preofc_string,12,13)))
+        preofc_inteira = tryparse(Float32, string(SubString(preofc_string,1,11)))
+        preofc_decimal = tryparse(Float32,"0."*string(SubString(preofc_string,12,13)))
         preofc = preofc_inteira + preofc_decimal
 
         preofv_string = string(SubString(line, 135, 147))
-        preofv_inteira = tryparse(Float64, string(SubString(preofv_string,1,11)))
-        preofv_decimal = tryparse(Float64,"0."*string(SubString(preofv_string,12,13)))
+        preofv_inteira = tryparse(Float32, string(SubString(preofv_string,1,11)))
+        preofv_decimal = tryparse(Float32,"0."*string(SubString(preofv_string,12,13)))
         preofv = preofv_inteira + preofv_decimal
 
         totneg = parse(Int,SubString(line, 148, 152))
         quatot = parse(Int,SubString(line, 153, 170))
 
         voltot_string = string(SubString(line, 171, 188))
-        voltot_inteira = tryparse(Float64,string(SubString(voltot_string,1,16)))
-        voltot_decimal = tryparse(Float64,"0."*string(SubString(voltot_string,17,18)))
+        voltot_inteira = tryparse(Float32,string(SubString(voltot_string,1,16)))
+        voltot_decimal = tryparse(Float32,"0."*string(SubString(voltot_string,17,18)))
         voltot = voltot_inteira + voltot_decimal
 
         preexe_string = string(SubString(line, 189, 201))
-        preexe_inteira = tryparse(Float64, string(SubString(preexe_string,1,11)))
-        preexe_decimal = tryparse(Float64,"0."*string(SubString(preexe_string,12,13)))
+        preexe_inteira = tryparse(Float32, string(SubString(preexe_string,1,11)))
+        preexe_decimal = tryparse(Float32,"0."*string(SubString(preexe_string,12,13)))
         preexe = preexe_inteira + preexe_decimal
 
         indopc = parse(Int,SubString(line, 202, 202))
@@ -104,8 +104,8 @@ for line in eachline(file)
         fatcot = parse(Int,SubString(line, 211, 217))
 
         ptoexe_string = string(SubString(line, 218, 230))
-        ptoexe_inteira = tryparse(Float64, string(SubString(ptoexe_string,1,7)))
-        ptoexe_decimal = tryparse(Float64,"0."*string(SubString(ptoexe_string,8,13)))
+        ptoexe_inteira = tryparse(Float32, string(SubString(ptoexe_string,1,7)))
+        ptoexe_decimal = tryparse(Float32,"0."*string(SubString(ptoexe_string,8,13)))
         ptoexe = ptoexe_inteira + ptoexe_decimal
         
         #=if (ptoexe_string != "0000000000000") 
