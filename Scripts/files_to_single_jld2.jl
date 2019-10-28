@@ -99,7 +99,7 @@ jldopen(hdf5_file_name,"w") do jldfile
                 data_dataven =SubString(line, 203, 210)
                 datven = Date(parse(Int,SubString(data_dataven,1,4)),parse(Int,SubString(data_dataven,5,6)),parse(Int,SubString(data_dataven,7,8)))
                 fatcot = parse(Int,SubString(line, 211, 217))
-
+                global file_counter += 1
                 ptoexe_string = string(SubString(line, 218, 230))
                 ptoexe_inteira = tryparse(Float32, string(SubString(ptoexe_string,1,7)))
                 ptoexe_decimal = tryparse(Float32,"0."*string(SubString(ptoexe_string,8,13)))
