@@ -10,7 +10,8 @@ matrix = load(hdf5_file_name, "COTAHIST/2019")
 df = DataFrame(data = [], codneg = [], preult = [])
 
 for acao in eachrow(matrix)
-    if (acao[4] == 10 || acao[4] == 20) #mercado lote padrao ou fracionario
+    #if (acao[4] == 10 || acao[4] == 20) #mercado lote padrao ou fracionario
+    if (acao[4] == 10)
         push!(df, [acao[1], rstrip(acao[3]), acao[13]])
     end
 end

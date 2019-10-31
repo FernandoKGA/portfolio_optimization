@@ -14,11 +14,19 @@ Os arquivos necessários para a execução dos scripts deverão ser extraídos e
 
 A saida após essa execução serão as bibliotecas baixadas e os arquivos extraidos no formato txt.
 
-Para a criação do arquivo unico em formato JLD2 é necessário rodar o script `files_reader_to_jld2.jl`. 
+Para a criação do arquivo unico em formato JLD2 é necessário rodar o script `files_to_single_jld2.jl`. 
 
-* Abrir o terminal e executar: `julia files_reader_to_jld2.jl`
+* Abrir o terminal e executar: `julia files_to_single_jld2.jl`
 
-ATENÇÃO: a execução desse script demanda muita memória RAM, idealmente a partir de 8gb. Recomendamos não rodar mais processos parelelos durante essa execução  
+**ATENÇÃO**: a execução desse script demanda muita memória RAM, idealmente a partir de 8gb. Recomendamos não rodar mais processos paralelos durante essa execução, feche todos os programas possíveis e mantenha aberto o Gerenciador de Desempenho para monitar o processo.
+
+*Observação*: Os arquivos `file_test_cat_csv.jl` e `file_test_cat_jld2.jl` são para testes. O script `files_to_csv.jl` traduz dos arquivos de texto diretamente para arquivos do formato `.csv`, todas as colunas feitas diretamente em string, sem transformação, caso queira utilizar.
+
+Uma vez pronto o processamento dos dados para o arquivo único em `.jld2`, podemos executar os outros scripts que irão reduzir os processados para o que necessitamos. Foram compilados dois scripts que são chamados por um único de nome `data_to_single_dataframe.jl`.
+
+* Abrir o terminal e executar: `julia data_to_single_dataframe.jl`
+
+Ele irá gerar um arquivo `COTAHIST_PIVOTADO.csv` com todas as ações do TPMERC == 10 e com os dados já pivotados e preenchidos com 0 se faltam dados (pode ser que isso seja revisto).
 
 ### Acessando os datasets 
 

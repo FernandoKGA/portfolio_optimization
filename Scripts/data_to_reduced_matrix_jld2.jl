@@ -1,5 +1,7 @@
 using JLD2, FileIO, DataFrames, Dates
 
+println("Iniciando redução dos dados para matrizes de 3 colunas.")
+
 root_dir = dirname(pwd())
 unzipped_files_path = *(root_dir, "/Datasets/Dataset_Bovespa/Unzipped/")
 matrix_jld2_file_name = (unzipped_files_path * "COTAHIST" * ".jld2")
@@ -26,7 +28,8 @@ jldopen(reduced_matrix_file_name, "w") do jldfile
         local matrix = load(matrix_jld2_file_name, "COTAHIST/" * file_counter_string)
 
         for acao in eachrow(matrix)
-            if (acao[4] == 10 || acao[4] == 20) #mercado lote padrao ou fracionario
+            #if (acao[4] == 10 || acao[4] == 20) #mercado lote padrao ou fracionario
+            if (acao[4] == 10)
                 push!(df, [acao[1], rstrip(acao[3]), acao[13]]) # acao[1] = data; acao[3] = nome acao; acao[13] = preult
             end
         end
@@ -41,7 +44,4 @@ time_fim = Dates.now()
 println("TI: " * Dates.format(time_inicio, "S:s"))
 println("TF: " * Dates.format(time_fim, "S:s"))
 println(time_fim - time_inicio)
-
-#df = unstack(df, :data, :codneg, :preult) #pivota a tabela para as acoes
-#df = coalesce.(df, 0)  #substitui missing por 0
-#CSV.write(csv, df)
+println("Finalizada execução de redução dos dados para matrizes de 3 colunas.")
